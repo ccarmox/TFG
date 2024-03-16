@@ -1,4 +1,11 @@
-# TFG
+# TFG: Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android
+
+- Alumno: Cristian Do Carmo Rodríguez
+- Tutora: [Lucía Díaz Vilariño](https://minaseenerxia.uvigo.es/es/docencia/profesorado/lucia-diaz-vilarino/)
+- Cotutor: [Jesús Balado Frías](https://minaseenerxia.uvigo.es/es/docencia/profesorado/jesus-balado-frias/)
+
+
+# Resumen
 En este documento se estudia y desarrolla una aplicación para el sistema operativo móvil Android, codificada en Java, que unifica información de distintas fuentes con el objetivo de permitir una movilidad urbana óptima para los peatones a través de interfaces visuales sencillas e intuitivas, así como mediante audio y voz.
 
 Para favorecer la simplificación del problema se trabaja con datos y regiones a pequeña escala, concretamente centrándose en la información disponible para el área de Vigo. Se utilizan como punto de partida los datos de la plataforma OpenStreetMap, de los que se extrae la posición de elementos urbanos comunes, tales como pasos de peatones o aceras, que son ampliados con información procedente de formatos de archivo de uso común en cuantificadores deportivos y de salud, así como datos generados desde el proyecto por el propio usuario.
@@ -10,7 +17,8 @@ Se define la interfaz de usuario y se implementan los algoritmos Dijkstra y A*, 
 Utilizando la plataforma Android Studio se crea y compila todo el proyecto hasta obtener una aplicación instalable en formato APK o Bundle según sea necesario.
 
 
-Palabras clave: Android, Dijkstra, A*, nube de puntos, navegación, GPS, ruta, movilidad.
+
+**Palabras clave:** _Android, Dijkstra, A*, nube de puntos, navegación, GPS, ruta, movilidad._
 
 
 
