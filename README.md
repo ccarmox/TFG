@@ -1,6 +1,9 @@
-# TFG: Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android
+# <div align="center"> Trabajo de Fin de Grado
+## <div align="center"> Grado en Ingeniería en Electrónica Industrial y Automática
+## <div align="center"> Universidad de Vigo
+### Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android
 
-- Alumno: Cristian Do Carmo Rodríguez
+- Alumno: [Cristian Do Carmo Rodríguez](https://www.linkedin.com/in/cristian-do-carmo-rodr%C3%ADguez-9321a9163/)
 - Tutora: [Lucía Díaz Vilariño](https://minaseenerxia.uvigo.es/es/docencia/profesorado/lucia-diaz-vilarino/)
 - Cotutor: [Jesús Balado Frías](https://minaseenerxia.uvigo.es/es/docencia/profesorado/jesus-balado-frias/)
 
@@ -22,7 +25,9 @@ Utilizando la plataforma Android Studio se crea y compila todo el proyecto hasta
 
 
 
-# Fuentes de las imágenes
+# Fuentes de las imágenes utilizadas en el proyecto
+
+- [Logo de la escuela de Ingeniería Industrial](https://eei.uvigo.es/es/escuela/comunicacion/imagen/)
 
 - [Iconografía, Material Symbols](https://fonts.google.com/icons?icon.set=Material+Symbols)
 
