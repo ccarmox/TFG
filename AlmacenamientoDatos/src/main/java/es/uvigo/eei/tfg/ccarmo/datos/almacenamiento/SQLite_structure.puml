@@ -1,0 +1,131 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.datos.almacenamiento.SQLite",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   SQLite1439053178[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SQLite</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   db: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addVertices(vertices: Vertice...)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addVertices(vertices: ArrayList&lt;Vertice&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ borrar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBaseDeDatos(paquete: String, context: Context): SQLite</TD></TR>
+<TR><TD ALIGN="LEFT" >- getContentValues(vertice: Vertice): ContentValues</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCursor(writable: boolean, inverse: boolean, busqueda: String): Cursor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVertice(cursor: Cursor): Vertice</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticeListArray(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double): List&lt;Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double, configuracion: Configuracion): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(texto: String): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(texto: String, limite: int): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreate(db: SQLiteDatabase)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onUpgrade(db: SQLiteDatabase, oldVersion: int, newVersion: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+
+    
+}
+@enduml

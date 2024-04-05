@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSurface"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?colorSurfaceVariant">
+
+
+        <ImageView
+            android:id="@+id/capas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/barra_inferior" />
+
+        <LinearLayout
+            android:id="@+id/barra_inferior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="?colorSurface"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/boton_capas"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:icon="@drawable/ic_capas"
+                    app:iconSize="36dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/view_brujula"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_norte" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/boton_centrar"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:icon="@drawable/ic_persona"
+                    app:iconSize="36dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tarjeta_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorSurface"
+            android:visibility="gone"
+            app:cardBackgroundColor="?colorSurface"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="6dp"
+            app:strokeColor="?colorOnSurface"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorSurface"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/texto_datos_ruta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    android:minLines="1"
+                    android:padding="24dp"
+                    android:text="@string/menu_mapa"
+                    android:textColor="?colorPrimary"
+                    android:textSize="@dimen/h1"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp">
+
+                    <Button
+                        android:id="@+id/boton_cancelar_ruta"
+                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        app:icon="@drawable/ic_cerrar"
+                        app:iconSize="26dp" />
+
+                    <Button
+                        android:id="@+id/boton_compartir_ruta"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="84dp"
+                        app:icon="@drawable/ic_guardar"
+                        app:iconSize="26dp" />
+
+
+                    <Button
+                        android:id="@+id/boton_navegacion"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="false"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="?colorSecondary"
+                        android:paddingLeft="16dp"
+                        android:text="@string/abrir_navegacion"
+                        android:textColor="?colorOnSecondary"
+                        app:icon="@drawable/ic_navegacion" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tarjeta_generacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorSurface"
+            android:visibility="gone"
+            app:cardBackgroundColor="?colorSurface"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="6dp"
+            app:strokeColor="?colorOnSurface"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorSurface"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/texto_datos_generacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    android:minLines="1"
+                    android:padding="24dp"
+                    android:text="@string/menu_mapa"
+                    android:textColor="?colorPrimary"
+                    android:textSize="@dimen/h1"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp">
+
+                    <Button
+                        android:id="@+id/boton_cancelar_generacion"
+                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        app:icon="@drawable/ic_cerrar"
+                        app:iconSize="26dp" />
+
+                    <Button
+                        android:id="@+id/boton_compartir_generacion"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="84dp"
+                        app:icon="@drawable/ic_guardar"
+                        app:iconSize="26dp" />
+
+
+                    <Button
+                        android:id="@+id/boton_importar_generacion"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="false"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="?colorSecondary"
+                        android:paddingLeft="16dp"
+                        android:text="@string/importar"
+                        android:textColor="?colorOnSecondary"
+                        app:icon="@drawable/ic_importar" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/barra_inferior">
+
+            <ProgressBar
+                android:id="@+id/cargando"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/contenedor_botones_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorSurface"
+            android:visibility="gone"
+            app:cardBackgroundColor="?colorSurface"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="6dp"
+            app:strokeColor="?colorOnSurface"
+            app:strokeWidth="0dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorSurface"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+
+                <Button
+                    android:id="@+id/boton_ruta_desde_aqui"
+                    style="@style/Widget.Material3.Button.TonalButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mapa_generar_ruta_desde_aqui"
+                    app:icon="@drawable/ic_ruta" />
+
+                <Button
+                    android:id="@+id/boton_ruta_hasta_aqui"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mapa_generar_ruta_hasta_aqui"
+                    app:icon="@drawable/ic_fin" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <es.uvigo.eei.tfg.ccarmo.ui.views.buscador.BuscadorView
+            android:id="@+id/buscador"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

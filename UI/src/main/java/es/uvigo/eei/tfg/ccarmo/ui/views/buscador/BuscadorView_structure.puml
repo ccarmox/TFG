@@ -1,0 +1,192 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "SQLite",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": true,
+    "hideDataStructures": true,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.ui.views.buscador.BuscadorView",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AdapterBusquedas1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AdapterBusquedas</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultados: ArrayList&lt;Vertice&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(holder: ViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BuscadorView1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BuscadorView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   adapter: AdapterBusquedas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stt: STT [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tts: TTS [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ buscar(texto: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarBuscador()</TD></TR>
+<TR><TD ALIGN="LEFT" >- getVertices(texto: String): ArrayList&lt;Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- iniciar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iniciar(nombreDB: String, resultadoListener: OnResultadoListener)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompoundBase1013033045[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompoundBase</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+STT1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)STT</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   context: Activity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   speechRecognizer: SpeechRecognizer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- cargar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ destruir()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ escuchar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TTS64772380[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TTS</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   listo: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   textToSpeech: TextToSpeech [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ leer(text: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+BuscadorView1110513348 -> AdapterBusquedas1110513348[label="adapter
+[0..1]"];
+BuscadorView1110513348 -> STT1110513348[label="stt
+[0..1]"];
+BuscadorView1110513348 -> TTS64772380[label="tts
+[0..1]"];
+CompoundBase1013033045 -> BuscadorView1110513348[arrowhead=none, arrowtail=empty, dir=both];
+    
+}
+@enduml

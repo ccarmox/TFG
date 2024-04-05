@@ -1,0 +1,86 @@
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSurface">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/splashdatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_horizontal"
+                android:text="@string/nombre_proyecto"
+                android:textAllCaps="true"
+                android:textColor="?colorOnSurface"
+                android:textSize="@dimen/h5"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_horizontal"
+                android:text="@string/desarrollador"
+                android:textColor="?colorTertiary"
+                android:textSize="@dimen/h5" />
+
+            <ImageView
+                android:layout_width="240dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="36dp"
+                android:src="@drawable/logo_eei_uvigo" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/logo_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/splashdatos"
+            android:layout_marginTop="64dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+
+                    android:layout_width="185dp"
+                    android:layout_height="185dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logo" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

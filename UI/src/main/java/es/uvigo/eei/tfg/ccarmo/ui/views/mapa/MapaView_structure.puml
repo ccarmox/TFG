@@ -1,0 +1,151 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 0,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.ui.views.mapa.MapaView",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   MapaView1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MapaView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atenderAcciones: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   destinoRuta: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   evento_click_inicio: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerCalor: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerClicks: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerMap: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerOver: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUser: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorCalor: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorMap: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorOver: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorUser: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   origenRuta: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   scaleGestureDetector: ScaleGestureDetector [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueA1: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueA2: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueB1: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueB2: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimoClick: LatLon [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ MapaView(mContext: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaView(context: Context, attrs: AttributeSet)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaView(context: Context, attrs: AttributeSet, defStyleAttr: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaView(context: Context, attrs: AttributeSet, defStyleAttr: int, defStyleRes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- click(latLon: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >- iniciar()</TD></TR>
+<TR><TD ALIGN="LEFT" >- obtenerAngulo(a: Pixel, b: Pixel): float</TD></TR>
+<TR><TD ALIGN="LEFT" ># onAnguloUpdate(angulo: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarClicks()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarFiguras()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaDeCalor()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarPosicionUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >- reiniciarPreview()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCargando(cargando: boolean)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+
+    
+}
+@enduml

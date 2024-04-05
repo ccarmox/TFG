@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'es.uvigo.eei.tfg.ccarmo.importacion'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+}
+
+dependencies {
+
+    //Importacion de las clases del proyecto
+    implementation project(':ClasesComunes')
+    implementation project(':AlmacenamientoDatos')
+    implementation project(':Herramientas')
+
+
+    implementation 'androidx.annotation:annotation:1.7.1'
+
+    //Biblioteca para determinar si un punto esta dentro de una region
+    implementation 'org.locationtech.jts:jts-core:1.17.0'
+
+
+    //Interpretar XML
+    //No se puede actualizar la dependencia porque no es compatible con Android por la version de Java usada
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.1"
+    implementation 'javax.xml.stream:stax-api:1.0'
+    implementation 'com.fasterxml.woodstox:woodstox-core:6.5.1'
+
+    //Interpretar JSON
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+}

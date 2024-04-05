@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?colorSurface"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_buscar"
+            app:tint="?colorOnSurface" />
+
+        <EditText
+            android:id="@+id/cuadro_texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="56dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/buscar"
+            android:inputType="text"
+            android:paddingStart="14dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text=""
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/boton_cerrar"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="6dp"
+            android:visibility="gone"
+            app:icon="@drawable/ic_cerrar"
+            app:tint="?colorOnSurface" />
+
+        <Button
+            android:id="@+id/boton_voz"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="6dp"
+            app:icon="@drawable/ic_voz"
+            app:tint="?colorOnSurface" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?colorSurfaceContainer"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</LinearLayout>

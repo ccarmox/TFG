@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:hardwareAccelerated="true"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.ActividadSplash" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.ActividadMenu" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.visualizacion.ActividadEliminarRegion" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.generacion.ActividadGeneracion" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.ActividadAjustes" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadMenuImportacion" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadImportacionError" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.visualizacion.ActividadMapa" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.visualizacion.ActividadNavegacion" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadImportacionProceso" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadImportacionResolucion" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadImportacionDestino" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadImportacionSeleccionarTipo" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.ejemplo.ActividadEjemplos" android:exported="false"/>
+        <activity android:name="es.uvigo.eei.tfg.ccarmo.ui.actividades.importacion.ActividadImportacionExterna" android:exported="true">
+
+
+
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:host="*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.geojson" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.geojson" />
+                <data android:pathPattern=".*\\..*\\..*\\.geojson" />
+                <data android:pathPattern=".*\\..*\\.geojson" />
+                <data android:pathPattern=".*\\.geojson" />
+                <data android:scheme="content" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.geojson" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.geojson" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\.geojson"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\.geojson"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\.geojson"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\.geojson"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\.geojson"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\.geojson"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.geojson"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/pkpass" android:host="*" android:pathPattern=".*\\.geojson"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/*" android:scheme="content" android:host="*" android:pathPattern=".*.geojson"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*.geojson"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*\\.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*.geojson"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*.geojson"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.geojson"/>
+            </intent-filter>
+
+
+
+
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:host="*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.tcx" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.tcx" />
+                <data android:pathPattern=".*\\..*\\..*\\.tcx" />
+                <data android:pathPattern=".*\\..*\\.tcx" />
+                <data android:pathPattern=".*\\.tcx" />
+                <data android:scheme="content" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.tcx" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.tcx" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\.tcx"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\.tcx"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\.tcx"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\.tcx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\.tcx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\.tcx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.tcx"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/pkpass" android:host="*" android:pathPattern=".*\\.tcx"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/*" android:scheme="content" android:host="*" android:pathPattern=".*.tcx"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*.tcx"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*\\.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*.tcx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*.tcx"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.tcx"/>
+            </intent-filter>
+
+
+
+
+
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:host="*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.osm" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.osm" />
+                <data android:pathPattern=".*\\..*\\..*\\.osm" />
+                <data android:pathPattern=".*\\..*\\.osm" />
+                <data android:pathPattern=".*\\.osm" />
+                <data android:scheme="content" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.osm" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.osm" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\.osm"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\.osm"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\.osm"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\.osm"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\.osm"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\.osm"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.osm"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/pkpass" android:host="*" android:pathPattern=".*\\.osm"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/*" android:scheme="content" android:host="*" android:pathPattern=".*.osm"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*.osm"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*\\.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*.osm"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*.osm"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.osm"/>
+            </intent-filter>
+
+
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:host="*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpx" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.gpx" />
+                <data android:pathPattern=".*\\..*\\..*\\.gpx" />
+                <data android:pathPattern=".*\\..*\\.gpx" />
+                <data android:pathPattern=".*\\.gpx" />
+                <data android:scheme="content" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.gpx" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.gpx" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\.gpx"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\.gpx"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\.gpx"/>
+                <data android:scheme="http" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\.gpx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\.gpx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\.gpx"/>
+                <data android:scheme="https" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.gpx"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/pkpass" android:host="*" android:pathPattern=".*\\.gpx"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/*" android:scheme="content" android:host="*" android:pathPattern=".*.gpx"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*.gpx"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="file" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+            </intent-filter>
+
+            <intent-filter  tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*\\.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*..*.gpx"/>
+                <data android:mimeType="application/octet-stream" android:pathPattern=".*.gpx"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+                <data android:mimeType="*/*" android:scheme="content" android:host="*" android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx"/>
+            </intent-filter>
+
+
+
+        </activity>
+
+    </application>
+
+</manifest>

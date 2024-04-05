@@ -1,0 +1,256 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.importacion.algoritmos.osm.xml.OSMObjeto",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   OSMFrontera1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMFrontera</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   latitudMaxima: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitudMinima: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitudMaxima: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitudMinima: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMMiembro1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMMiembro</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   referencia: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rol: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tipo: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMNodo1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMNodo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   autor: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fecha: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitud: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitud: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   referenciaCambios: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tags: List&lt;OSMTag&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   uid: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   version: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   visible: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMObjeto1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMObjeto</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atribucion: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   copyrightDatos: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fronteras: OSMFrontera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   generadorExportacionOSM: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   licencia: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nodos: List&lt;OSMNodo&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   relaciones: List&lt;OSMRelacion&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   version: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   vias: List&lt;OSMVia&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMReferenciaNodo1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMReferenciaNodo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   referencia: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMRelacion1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMRelacion</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   autor: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fecha: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   miembros: List&lt;OSMMiembro&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   referenciaCambios: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tags: List&lt;OSMTag&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   uid: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   version: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   visible: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMTag1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMTag</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clave: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   valor: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OSMVia1284350775[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OSMVia</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   autor: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fecha: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   referenciaCambios: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   referenciaNodos: List&lt;OSMReferenciaNodo&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tags: List&lt;OSMTag&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   uid: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   version: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   visible: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+OSMNodo1284350775 -> OSMTag1284350775[label="tags
+[0..*]"];
+OSMObjeto1284350775 -> OSMFrontera1284350775[label="fronteras
+[0..1]"];
+OSMObjeto1284350775 -> OSMNodo1284350775[label="nodos
+[0..*]"];
+OSMObjeto1284350775 -> OSMRelacion1284350775[label="relaciones
+[0..*]"];
+OSMObjeto1284350775 -> OSMVia1284350775[label="vias
+[0..*]"];
+OSMRelacion1284350775 -> OSMMiembro1284350775[label="miembros
+[0..*]"];
+OSMRelacion1284350775 -> OSMTag1284350775[label="tags
+[0..*]"];
+OSMVia1284350775 -> OSMReferenciaNodo1284350775[label="referenciaNodos
+[0..*]"];
+OSMVia1284350775 -> OSMTag1284350775[label="tags
+[0..*]"];
+    
+}
+@enduml

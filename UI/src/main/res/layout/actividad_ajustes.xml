@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSurface"
+    tools:context=".ui.actividades.visualizacion.ActividadMapa">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/actividad_margen_lateral"
+        android:layout_marginEnd="@dimen/actividad_margen_lateral"
+        android:layout_marginBottom="@dimen/actividad_margen_inferior"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/menu_ajustes"
+            android:textSize="@dimen/h1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/seleccionar_algoritmo_titulo"
+            android:textSize="@dimen/h2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@string/seleccionar_algoritmo_descripcion"
+            android:textSize="@dimen/p" />
+
+
+        <RadioGroup
+            android:id="@+id/seleccion_algoritmo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/algoritmo_aestrella"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A*" />
+
+            <RadioButton
+                android:id="@+id/algoritmo_dijkstra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dijkstra" />
+        </RadioGroup>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/borrar_area_titulo"
+            android:textSize="@dimen/h2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/borrar_area_descripcion"
+            android:textSize="@dimen/p" />
+
+        <Button
+            android:id="@+id/boton_borrar_area"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/borrar_area_boton"
+            app:icon="@drawable/ic_borrar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/borrar_base_de_datos_titulo"
+            android:textSize="@dimen/h2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/borrar_base_de_datos_descripcion"
+            android:textSize="@dimen/p" />
+
+        <Button
+            android:id="@+id/boton_borrar_base_de_datos"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/borrar_base_de_datos_boton"
+            app:icon="@drawable/ic_borrar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/licencias"
+            android:textSize="@dimen/h2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/consultar_lista_licencias"
+            android:textSize="@dimen/p" />
+
+        <Button
+            android:id="@+id/boton_licencias"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/abrir_licencias"
+            app:icon="@drawable/ic_licencias" />
+
+    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorSurfaceVariant"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/desarrollador"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textSize="@dimen/h5" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="36dp"
+                    android:src="@drawable/logo_eei_uvigo" />
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

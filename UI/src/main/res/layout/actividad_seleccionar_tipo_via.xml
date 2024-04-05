@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSurface"
+    tools:context=".ui.actividades.visualizacion.ActividadMapa">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/contenedor_opciones"
+        android:background="@drawable/xml_gradiente_vertical_azul">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="32dp"
+                app:srcCompat="@drawable/ilust_paseo" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="?colorSurface"
+                app:cardBackgroundColor="?colorSurface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:strokeColor="?colorOnSurface"
+                app:strokeWidth="0dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/seleccion"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="?colorSurface"
+                            android:checkedButton="@id/opcion_sendero"
+                            android:paddingStart="8dp"
+                            android:paddingTop="12dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="12dp">
+
+                            <RadioButton
+                                android:id="@+id/opcion_sendero"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sendero" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_acera"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/acera" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_paso_peatones"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/paso_peatones" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_escaleras"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/escaleras" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_via_residencial"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/via_residencial" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_via_servicio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/via_servicio" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_via_peatonal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/via_peatonal" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_poi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/poi" />
+
+                            <RadioButton
+                                android:id="@+id/opcion_paso_elevado"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/paso_elevado" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/contenedor_opciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/actividad_margen_lateral"
+        android:layout_marginEnd="@dimen/actividad_margen_lateral"
+        android:layout_marginBottom="@dimen/actividad_margen_inferior"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/seleccionar_tipo_via_titulo"
+            android:textSize="@dimen/h1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/seleccionar_tipo_via_descripcion"
+            android:textSize="@dimen/p" />
+
+
+        <Button
+            android:id="@+id/boton_continuar"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/continuar"
+            app:icon="@drawable/ic_next"
+            app:iconGravity="end" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_bosque"
+                    app:tint="?colorPrimaryContainer" />
+
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_arbol"
+                    app:tint="?colorPrimaryContainer" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_caminar"
+                    app:tint="?colorPrimary" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_senal"
+                    app:tint="?colorPrimaryContainer" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_arbol"
+                    app:tint="?colorPrimaryContainer" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_destino"
+                    app:tint="?colorPrimaryContainer" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

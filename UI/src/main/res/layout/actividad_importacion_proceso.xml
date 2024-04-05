@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn = "true"
+    tools:context=".ui.actividades.visualizacion.ActividadMapa">
+
+    <LinearLayout
+        android:id="@+id/bloque_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/actividad_margen_inferior"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/porcentaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="0%"
+                android:textColor="?colorPrimary"
+                android:textSize="100sp" />
+
+            <TextView
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="..."
+                android:textColor="?colorTertiary"
+                android:textSize="20sp" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="50" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/actividad_margen_lateral"
+            android:layout_marginEnd="@dimen/actividad_margen_lateral"
+            android:gravity="center_horizontal"
+            android:text="@string/importacion_archivo_ejecucion_titulo"
+            android:textSize="@dimen/h1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/actividad_margen_lateral"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/actividad_margen_lateral"
+            android:layout_marginBottom="16dp"
+            android:text="@string/importacion_archivo_ejecucion_descripcion"
+            android:textSize="@dimen/p" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bloque_inferior"
+        android:background="@drawable/xml_gradiente_vertical_azul">
+
+        <ImageView
+            android:layout_width="240dp"
+            android:layout_height="105dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ilust_proceso_import" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

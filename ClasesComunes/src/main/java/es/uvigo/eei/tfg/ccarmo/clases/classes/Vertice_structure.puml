@@ -1,0 +1,212 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.clases.classes.Vertice",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Arista840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Arista</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   cost: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   id: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ compareTo(b: Arista): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Baremos987841749[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Baremos</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getDistanciaEnGradosArea(resolucion: int): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaEnGradosLimiteEntrePuntos(resolucion: int): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaEnMetrosEntrePuntos(resolucion: int): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMargenParaLeerLaBaseDeDatos(resolucion: int): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LatLon840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LatLon</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   altitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolucion: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clone(): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarID(latitude: double, longitude: double, altitude: double, resolucion: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarID(coordenada: double, resolucion: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarIDAltitud(coordenada: double): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisica(a: LatLon, b: LatLon): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisicaA(latLon: LatLon): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getResolucion(parametro: double): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isIgual(latLon: LatLon): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- setResolucion(parametro: double, resolucion: int): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pixel840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pixel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   x: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   y: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ invertirReferencia(x: int, y: int, mapa2: InterfazMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ referenciar(mapa2: InterfazMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ referenciar(lat: double, lon: double, mapa2: InterfazMapa)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Vertice840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Vertice</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aristas: ArrayList&lt;Arista&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   informacion: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   penalizacion: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   posicion: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tipoVia: TipoVia [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unible: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addProximo(nodo: Vertice, distance: Integer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addProximo(nodo: Vertice)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addProximo(union: Arista)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addProximo(lista: ArrayList&lt;Arista&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ compareTo(o: Vertice): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ eliminarProximos()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisica2D(latLon: LatLon): Integer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isContieneProximo(nudo: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isContieneProximo(referencia: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isPocaDistanciaA(nodo: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isProximo(nudo: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isProximo(id: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isUnible(b: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ordenarAristasPorPeso()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+Pixel840444960 -> Vertice840444960[arrowhead=none, arrowtail=empty, dir=both];
+Vertice840444960 -> Arista840444960[label="aristas
+[0..*]"];
+Vertice840444960 -> Baremos987841749[label="isPocaDistanciaA() -> getDistanciaEnGradosLimiteEntrePuntos()"];
+    
+}
+@enduml

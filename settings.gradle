@@ -1,0 +1,7 @@
+include ':UI'
+rootProject.name = "TFG-Cristian-Do-Carmo"
+include ':AlmacenamientoDatos'
+include ':ClasesComunes'
+include ':Importacion'
+include ':GeneracionRutas'
+include ':Herramientas'

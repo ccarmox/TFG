@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<resources>
+
+    <dimen name="h0">32sp</dimen>
+    <dimen name="h1">24sp</dimen>
+    <dimen name="h2">20sp</dimen>
+    <dimen name="h3">18sp</dimen>
+    <dimen name="h4">16sp</dimen>
+    <dimen name="h5">15sp</dimen>
+    <dimen name="h12">12sp</dimen>
+    <dimen name="p">12sp</dimen>
+    <dimen name="p3">9sp</dimen>
+
+    <dimen name="actividad_margen_lateral">24dp</dimen>
+    <dimen name="actividad_margen_inferior">32dp</dimen>
+
+</resources>

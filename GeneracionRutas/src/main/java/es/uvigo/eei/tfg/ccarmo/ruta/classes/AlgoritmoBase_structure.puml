@@ -1,0 +1,1047 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.ruta.classes.AlgoritmoBase",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AEstrella1114883608[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AEstrella</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   nodes: Map&lt;String, AEstrellaVertice&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># generarRutaDesde(id: String, fin: LatLon): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" ># precargarNodosAlgoritmo(inicio: LatLon, fin: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" ># reciclarNodosAlgoritmo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># reiniciarNodosAlgoritmo()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AEstrellaVertice375449056[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AEstrellaVertice</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aristas: ArrayList&lt;AEstrellaArista&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   distanciaADestino: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   distanciaAOrigen: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   padre: AEstrellaVertice [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ cargarAristas(total: Map&lt;String, AEstrellaVertice&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reiniciar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadBase225432781[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadBase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   savedInstance: Bundle [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># actualizarSiEsPosible(runnable: Runnable)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onSaveInstanceState(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadGeneracion1807619463[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadGeneracion</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   activityResultLauncher: ActivityResultLauncher&lt;Intent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   contenido: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dbRuta: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   distanciaRecorrida: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapa2: MapaView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   posicion: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ruta: Ruta [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimoNudo: Vertice [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(activity: Activity)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ exportarContenido(nombreArchivo: String, contenido: String)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadImportacionBase800800035[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadImportacionBase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># finalizarYAvanzar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># finalizarYRetroceder()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadImportacionResolucion800800035[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadImportacionResolucion</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   fuentes: ArrayList&lt;Fuente&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolucion: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tipoVia: TipoVia [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(fuentes: ArrayList&lt;Fuente&gt;, tipoVia: TipoVia, context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadImportacionSeleccionarTipo800800035[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadImportacionSeleccionarTipo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(fuentes: ArrayList&lt;Fuente&gt;, context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadMapa1519276887[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadMapa</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   activityResultLauncher: ActivityResultLauncher&lt;Intent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   contenido: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapa2: MapaView [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(db: String, activity: Activity)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ abrir(db: String, latitud: double, longitud: double, activity: Activity)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ exportarContenido(nombreArchivo: String, contenido: String)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadMenu866164240[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadMenu</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadMenuImportacion800800035[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadMenuImportacion</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   activityResultLauncher: ActivityResultLauncher&lt;Intent&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNombreDeArchivo(uri: Uri, context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ActividadNavegacion1519276887[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ActividadNavegacion</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   mapa2: NavegacionView [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abrir(db: String, ruta: String, activity: Activity)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AdapterBusquedas1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AdapterBusquedas</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultados: ArrayList&lt;Vertice&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(holder: ViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Algoritmo1855503183[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Algoritmo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getAlgoritmo(nombreDB: String, configuracion: Configuracion, context: Context): AlgoritmoBase</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAlgoritmo(metodo: METODO, nombreDB: String, configuracion: Configuracion, context: Context): AlgoritmoBase</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isAEstrella(context: Context): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isDijkstra(context: Context): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AlgoritmoBase232569721[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AlgoritmoBase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   configuracion: Configuracion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quick: Map&lt;String, Vertice&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ruta: Ruta [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># almacenarRuta(vertices: ArrayList&lt;Vertice&gt;, puntosCalor: ArrayList&lt;PuntoCalor&gt;): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" >+ buscarRuta(inicio: LatLon, fin: LatLon): AlgoritmoBase</TD></TR>
+<TR><TD ALIGN="LEFT" >- cargarBaseDeDatos(inicio: LatLon, fin: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" ># generarRutaDesde(id: String, fin: LatLon): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" ># precargarNodosAlgoritmo(inicio: LatLon, fin: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" ># reciclarNodosAlgoritmo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># reiniciarNodosAlgoritmo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ terminar(): AlgoritmoBase</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BuscadorView1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BuscadorView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   adapter: AdapterBusquedas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stt: STT [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tts: TTS [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ buscar(texto: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarBuscador()</TD></TR>
+<TR><TD ALIGN="LEFT" >- getVertices(texto: String): ArrayList&lt;Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- iniciar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iniciar(nombreDB: String, resultadoListener: OnResultadoListener)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompoundBase1013033045[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompoundBase</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Configuracion1439053178[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Configuracion</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   viasValidas: ArrayList&lt;TipoVia&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Cronometro1688754482[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cronometro</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   contador: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tag: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tiempo: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- actualizar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ comenzar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ print()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ print(marca: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reiniciar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Dijkstra667571849[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Dijkstra</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   nodes: Map&lt;String, DijkstraVertice&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- cargar(nodo: DijkstraVertice, camino: String[], distanciaAcumulada: Integer)</TD></TR>
+<TR><TD ALIGN="LEFT" ># generarRutaDesde(id: String, fin: LatLon): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" ># precargarNodosAlgoritmo(inicio: LatLon, fin: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" ># reciclarNodosAlgoritmo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># reiniciarNodosAlgoritmo()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DijkstraVertice912029009[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DijkstraVertice</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aristas: ArrayList&lt;DijkstraArista&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   camino: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   distanciaAOrigen: Integer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ cargarUniones(total: Map&lt;String, DijkstraVertice&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reiniciar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ExportarGeoJSON1531989620[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ExportarGeoJSON</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getGeoJSONGenerado(lista: ArrayList&lt;Vertice&gt;): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getGeoJSONGenerado(nudoDB: String, context: Context): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FiguraMapa1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FiguraMapa</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   position: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tipo: TYPE [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clonar(): FiguraMapa</TD></TR>
+<TR><TD ALIGN="LEFT" >+ drawOnCanvas(canvas: Canvas, mapa: InterfazMapa)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Filtro21398262950[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Filtro2</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   acera: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dibujar_lineas: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   escaleras: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paso_elevado: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paso_peatones: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   poi: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   preferencias: SharedPreferences2 [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   puntosDeCalor: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sendero: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   via_peatonal: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   via_residencial: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   via_servicio: boolean [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Fuente1321929190[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Fuente</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   descarga: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   info: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tipo: TIPO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unible: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getFile(context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFuenteSQL(nombreDB: String): Fuente</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFuenteURI(nombreDB: String): Fuente</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSQLite(context: Context): SQLite</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTipoDato(nombreDeArchivo: String): TipoDato</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GPS1398262950[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GPS</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   REQUEST_PERMISSION_GPS: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   customLocationListener: ArrayList&lt;CustomLocationListener&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   mFusedLocationClient: FusedLocationProviderClient [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mLocationCallback: LocationCallback [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   mLocationRequest: LocationRequest [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getLastLocation()</TD></TR>
+<TR><TD ALIGN="LEFT" >- inicializar()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onDestroy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onRequestPermissionsResult(requestCode: int, permissions: String[], grantResults: int[])</TD></TR>
+<TR><TD ALIGN="LEFT" ># onStop()</TD></TR>
+<TR><TD ALIGN="LEFT" >- requestNewLocationData()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LatLon840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LatLon</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   altitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolucion: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clone(): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarID(latitude: double, longitude: double, altitude: double, resolucion: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarID(coordenada: double, resolucion: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarIDAltitud(coordenada: double): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisica(a: LatLon, b: LatLon): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisicaA(latLon: LatLon): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getResolucion(parametro: double): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isIgual(latLon: LatLon): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- setResolucion(parametro: double, resolucion: int): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LooperExecutor1013033045[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LooperExecutor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   mHandler: Handler [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ awaitTermination(l: long, timeUnit: TimeUnit): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(runnable: Runnable)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ shutdown()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ shutdownNow(): List&lt;Runnable&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MapaBaseView1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MapaBaseView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alto: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ancho: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   angulo: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   azimuthLocal: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   azimuthShowedLocal: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   calor: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   clicks: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cosenoGiro: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   figuras: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   figurasMapa: ArrayList&lt;FiguraMapa&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   filtro2: Filtro2 [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUI: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaAcera: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaEscaleras: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaNada: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaPasoDePeatones: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaPasoElevado: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaPoi: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaSendero: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaViaPeatonal: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaViaResidencial: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaViaServicio: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mCamino: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombreDB: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paintPuntoCalor: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewAngulo: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewAnguloX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewAnguloY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewDesplazamientoX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewDesplazamientoY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewZoomCentroX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewZoomCentroY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewZoomEscala: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ruta: Ruta [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   senoGiro: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimaActualizacionBrujula: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userLocationLocal: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   usuario: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   zoom: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actualizarBrujula(azimuth: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >- actualizarPinceles()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actualizarPosicionUsuario(latLon: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actualizarUI()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addFiguraMapa(uiOverlap: FiguraMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addFiguraMapa(uiOverlap: ArrayList&lt;FiguraMapa&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addFiguraMapa(uiOverlapIni: FiguraMapa, uiOverlapFin: FiguraMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ centrarPlano(origen: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ centrarPlanoEnElUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >- dibujarBitmapEnCanvas(canvas: Canvas, bitmap: Bitmap)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ generarRuta(origen: LatLon, destino: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLinea(tipoVia: TipoVia): Paint</TD></TR>
+<TR><TD ALIGN="LEFT" >+ limpiarFigurasMapa()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onAnguloUpdate(angulo: double)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onLayout(changed: boolean, left: int, top: int, right: int, bottom: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># recalcularCoordenadas()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarClicks()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarFiguras()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaDeCalor()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarPosicionUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarTodo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ redibujarBitmapsEnPantalla()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refrescarRuta()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MapaView1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MapaView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atenderAcciones: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   destinoRuta: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   evento_click_inicio: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerCalor: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerClicks: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerMap: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerOver: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUser: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorCalor: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorMap: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorOver: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorUser: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   origenRuta: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   scaleGestureDetector: ScaleGestureDetector [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueA1: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueA2: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueB1: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueB2: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimoClick: LatLon [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- click(latLon: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >- iniciar()</TD></TR>
+<TR><TD ALIGN="LEFT" >- obtenerAngulo(a: Pixel, b: Pixel): float</TD></TR>
+<TR><TD ALIGN="LEFT" ># onAnguloUpdate(angulo: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarClicks()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarFiguras()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaDeCalor()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarPosicionUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >- reiniciarPreview()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NavegacionView64772380[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NavegacionView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   azimuthLocal: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dbRuta: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerInstrucciones: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerNavigation: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUI: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUI2: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lectura: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   looperExecutorInstrucciones: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   looperExecutorNavigation: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mCamino: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mLinea: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mUser: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paint: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rutaLocal: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   speechSynthesizer: TTS [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimaActualizacion: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimaInstruccion: Instruccion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userLocationLocal: LatLon [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- actualizarMapaNavegacion()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMaximumLatitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMaximumLongitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMinimumLatitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMinimumLongitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >- init()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refrescar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refrescarInstruccion()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ rotarPunto(point: LatLon, center: LatLon, angle: double): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(userLocation: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(azimuth: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pixel840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pixel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   x: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   y: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ invertirReferencia(x: int, y: int, mapa2: InterfazMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ referenciar(mapa2: InterfazMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ referenciar(lat: double, lon: double, mapa2: InterfazMapa)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PuntoCalor232569721[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PuntoCalor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   valor: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getColor(maximo: int): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ruta232569721[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ruta</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   distancia: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapaCalor: ArrayList&lt;PuntoCalor&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombreDB: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rutaDB: SQLite [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ cerrar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDB(context: Context): SQLite</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SQLite1439053178[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SQLite</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   db: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addVertices(vertices: Vertice...)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addVertices(vertices: ArrayList&lt;Vertice&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ borrar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBaseDeDatos(paquete: String, context: Context): SQLite</TD></TR>
+<TR><TD ALIGN="LEFT" >- getContentValues(vertice: Vertice): ContentValues</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCursor(writable: boolean, inverse: boolean, busqueda: String): Cursor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVertice(cursor: Cursor): Vertice</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticeListArray(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double): List&lt;Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double, configuracion: Configuracion): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(texto: String): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(texto: String, limite: int): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreate(db: SQLiteDatabase)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onUpgrade(db: SQLiteDatabase, oldVersion: int, newVersion: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+STT1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)STT</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   context: Activity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   speechRecognizer: SpeechRecognizer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- cargar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ destruir()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ escuchar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SharedPreferences21688754482[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SharedPreferences2</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ borrar(variable: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ guardar(variable: String, valor: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ guardar(variable: String, valor: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ guardar(variable: String, valor: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ guardar(variable: String, valor: long)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ leer(variable: String, predefinido: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ leer(variable: String, predefinido: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ leer(variable: String, predefinido: boolean): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ leer(variable: String, predefinido: long): long</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TTS64772380[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TTS</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   listo: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   textToSpeech: TextToSpeech [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ leer(text: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Utils1324989349[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Utils</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ eliminarCache(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >- eliminarRecursivo(archivoODirectorio: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLocationFromAddress(strAddress: String, context: Context): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNudosSinRepetir(list: ArrayList&lt;Vertice&gt;): ArrayList&lt;Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStringFromAsset(mapAsset: String, context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStringFromCache(mapAsset: String, context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStringFromInternet(website: String, context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStringFromUri(mapAsset: String, context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStringFromUri(uri: Uri, context: Context): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ referenciarLineaDeNudos(nudos: ArrayList&lt;Vertice&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Vertice840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Vertice</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aristas: ArrayList&lt;Arista&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   informacion: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   penalizacion: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   posicion: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tipoVia: TipoVia [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unible: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addProximo(nodo: Vertice, distance: Integer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addProximo(nodo: Vertice)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addProximo(union: Arista)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addProximo(lista: ArrayList&lt;Arista&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ compareTo(o: Vertice): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ eliminarProximos()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisica2D(latLon: LatLon): Integer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isContieneProximo(nudo: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isContieneProximo(referencia: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isPocaDistanciaA(nodo: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isProximo(nudo: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isProximo(id: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isUnible(b: Vertice): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ordenarAristasPorPeso()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+VerticeBase232569721[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VerticeBase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   vertice: Vertice [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+AEstrella1114883608 -> AEstrellaVertice375449056[label="nodes
+[0..*]"];
+ActividadGeneracion1807619463 -> ActividadMenu866164240[label="onCreate() -> abrir()"];
+ActividadGeneracion1807619463 -> LatLon840444960[label="onCreate() -> getDistanciaFisicaA()"];
+ActividadGeneracion1807619463 -> MapaView1900846368[label="mapa2
+[0..1]"];
+ActividadGeneracion1807619463 -> Ruta232569721[label="ruta
+[0..1]"];
+ActividadGeneracion1807619463 -> SQLite1439053178[label="dbRuta
+[0..1]"];
+ActividadGeneracion1807619463 -> Vertice840444960[label="ultimoNudo
+[0..1]"];
+ActividadImportacionBase800800035 -> ActividadImportacionSeleccionarTipo800800035[arrowhead=none, arrowtail=empty, dir=both];
+ActividadImportacionSeleccionarTipo800800035 -> ActividadBase225432781[label="onCreate() -> onCreate()"];
+ActividadImportacionSeleccionarTipo800800035 -> ActividadMenuImportacion800800035[label="onCreate() -> abrir()"];
+ActividadMapa1519276887 -> ActividadMenu866164240[label="onCreate() -> abrir()"];
+ActividadMapa1519276887 -> MapaView1900846368[label="mapa2
+[0..1]"];
+ActividadNavegacion1519276887 -> ActividadMenu866164240[label="onCreate() -> abrir()"];
+ActividadNavegacion1519276887 -> NavegacionView64772380[label="mapa2
+[0..1]"];
+AlgoritmoBase232569721 -> AEstrella1114883608[arrowhead=none, arrowtail=empty, dir=both];
+AlgoritmoBase232569721 -> Configuracion1439053178[label="configuracion
+[0..1]"];
+AlgoritmoBase232569721 -> Dijkstra667571849[arrowhead=none, arrowtail=empty, dir=both];
+AlgoritmoBase232569721 -> LatLon840444960[label="almacenarRuta() -> getDistanciaFisica()"];
+AlgoritmoBase232569721 -> Ruta232569721[label="ruta
+[0..1]"];
+AlgoritmoBase232569721 -> SQLite1439053178[label="db
+[0..1]"];
+AlgoritmoBase232569721 -> Vertice840444960[label="quick
+[0..*]"];
+BuscadorView1110513348 -> AdapterBusquedas1110513348[label="adapter
+[0..1]"];
+BuscadorView1110513348 -> SQLite1439053178[label="db
+[0..1]"];
+BuscadorView1110513348 -> STT1110513348[label="stt
+[0..1]"];
+BuscadorView1110513348 -> TTS64772380[label="tts
+[0..1]"];
+CompoundBase1013033045 -> BuscadorView1110513348[arrowhead=none, arrowtail=empty, dir=both];
+CompoundBase1013033045 -> MapaBaseView1900846368[arrowhead=none, arrowtail=empty, dir=both];
+Dijkstra667571849 -> DijkstraVertice912029009[label="nodes
+[0..*]"];
+FiguraMapa1900846368 -> LatLon840444960[label="position
+[0..1]"];
+Filtro21398262950 -> SharedPreferences21688754482[label="preferencias
+[0..1]"];
+Fuente1321929190 -> SQLite1439053178[label="getSQLite() -> getBaseDeDatos()"];
+GPS1398262950 -> ActividadGeneracion1807619463[arrowhead=none, arrowtail=empty, dir=both];
+GPS1398262950 -> ActividadMapa1519276887[arrowhead=none, arrowtail=empty, dir=both];
+GPS1398262950 -> ActividadNavegacion1519276887[arrowhead=none, arrowtail=empty, dir=both];
+LatLon840444960 -> Pixel840444960[arrowhead=none, arrowtail=empty, dir=both];
+LatLon840444960 -> VerticeBase232569721[arrowhead=none];
+MapaBaseView1900846368 -> Algoritmo1855503183[label="generarRuta() -> getAlgoritmo()"];
+MapaBaseView1900846368 -> Cronometro1688754482[label="generarRuta() -> comenzar()"];
+MapaBaseView1900846368 -> FiguraMapa1900846368[label="figurasMapa
+[0..*]"];
+MapaBaseView1900846368 -> Filtro21398262950[label="filtro2
+[0..1]"];
+MapaBaseView1900846368 -> LatLon840444960[label="userLocationLocal
+[0..1]"];
+MapaBaseView1900846368 -> MapaView1900846368[arrowhead=none, arrowtail=empty, dir=both];
+MapaBaseView1900846368 -> Ruta232569721[label="ruta
+[0..1]"];
+MapaBaseView1900846368 -> SQLite1439053178[label="db
+[0..1]"];
+MapaView1900846368 -> ActividadGeneracion1807619463[arrowhead=none];
+MapaView1900846368 -> ActividadImportacionSeleccionarTipo800800035[label="iniciar() -> abrir()"];
+MapaView1900846368 -> ActividadMapa1519276887[arrowhead=none];
+MapaView1900846368 -> ActividadNavegacion1519276887[label="iniciar() -> abrir()"];
+MapaView1900846368 -> Fuente1321929190[label="iniciar() -> getFuenteSQL()"];
+MapaView1900846368 -> LatLon840444960[label="destinoRuta
+[0..1]"];
+MapaView1900846368 -> LatLon840444960[label="origenRuta
+[0..1]"];
+MapaView1900846368 -> LatLon840444960[label="ultimoClick
+[0..1]"];
+MapaView1900846368 -> LooperExecutor1013033045[label="looperExecutorCalor
+[0..1]"];
+MapaView1900846368 -> LooperExecutor1013033045[label="looperExecutorMap
+[0..1]"];
+MapaView1900846368 -> LooperExecutor1013033045[label="looperExecutorOver
+[0..1]"];
+MapaView1900846368 -> LooperExecutor1013033045[label="looperExecutorUser
+[0..1]"];
+MapaView1900846368 -> Pixel840444960[label="toqueA1
+[0..1]"];
+MapaView1900846368 -> Pixel840444960[label="toqueA2
+[0..1]"];
+MapaView1900846368 -> Pixel840444960[label="toqueB1
+[0..1]"];
+MapaView1900846368 -> Pixel840444960[label="toqueB2
+[0..1]"];
+Pixel840444960 -> MapaBaseView1900846368[arrowhead=none];
+Pixel840444960 -> PuntoCalor232569721[arrowhead=none, arrowtail=empty, dir=both];
+Pixel840444960 -> Vertice840444960[arrowhead=none, arrowtail=empty, dir=both];
+Ruta232569721 -> PuntoCalor232569721[label="mapaCalor
+[0..*]"];
+Ruta232569721 -> SQLite1439053178[label="rutaDB
+[0..1]"];
+VerticeBase232569721 -> AEstrellaVertice375449056[arrowhead=none, arrowtail=empty, dir=both];
+VerticeBase232569721 -> DijkstraVertice912029009[arrowhead=none, arrowtail=empty, dir=both];
+VerticeBase232569721 -> Vertice840444960[label="vertice
+[0..1]"];
+    
+}
+@enduml

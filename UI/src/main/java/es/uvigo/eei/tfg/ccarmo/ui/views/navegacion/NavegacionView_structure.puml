@@ -1,0 +1,153 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 0,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.ui.views.navegacion.NavegacionView",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   NavegacionView64772380[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NavegacionView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   azimuthLocal: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dbRuta: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerInstrucciones: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerNavigation: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUI: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUI2: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lectura: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   looperExecutorInstrucciones: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   looperExecutorNavigation: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mCamino: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mLinea: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mUser: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paint: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rutaLocal: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   speechSynthesizer: TTS [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimaActualizacion: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimaInstruccion: Instruccion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userLocationLocal: LatLon [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ NavegacionView(mContext: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ NavegacionView(context: Context, attrs: AttributeSet)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ NavegacionView(context: Context, attrs: AttributeSet, defStyleAttr: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ NavegacionView(context: Context, attrs: AttributeSet, defStyleAttr: int, defStyleRes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- actualizarMapaNavegacion()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMaximumLatitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMaximumLongitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMinimumLatitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMinimumLongitude(l: LatLon...): double</TD></TR>
+<TR><TD ALIGN="LEFT" >- init()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refrescar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refrescarInstruccion()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ rotarPunto(point: LatLon, center: LatLon, angle: double): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setRuta(nombreDB: String, ruta: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(userLocation: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(azimuth: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+
+    
+}
+@enduml

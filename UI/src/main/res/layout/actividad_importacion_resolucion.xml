@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSurface"
+    tools:context=".ui.actividades.visualizacion.ActividadMapa">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/contenedor_opciones"
+        android:background="@drawable/xml_gradiente_vertical_azul"
+        >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="116dp"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/ilust_path_puntos" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="?colorSurface"
+                    app:cardBackgroundColor="?colorSurface"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:strokeColor="?colorOnSurface"
+                    app:strokeWidth="0dp">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorPrimaryContainer">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="@string/titulo_tabla_resolucion"
+                                    android:textColor="?colorOnPrimaryContainer"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceContainer">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="1"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_1"
+                                    android:layout_toEndOf="@id/indice_resolucion_1">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceVariant">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="2"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_2"
+                                    android:layout_toEndOf="@id/indice_resolucion_2">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceContainer">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="3"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_3"
+                                    android:layout_toEndOf="@id/indice_resolucion_3">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceVariant">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="4"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_4"
+                                    android:layout_toEndOf="@id/indice_resolucion_4">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceContainer">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="5"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_5"
+                                    android:layout_toEndOf="@id/indice_resolucion_5">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceVariant">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="6"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_6"
+                                    android:layout_toEndOf="@id/indice_resolucion_6">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="?colorSurfaceContainer">
+
+                                <TextView
+                                    android:id="@+id/indice_resolucion_7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="7"
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@id/valor_resolucion_7"
+                                    android:layout_toEndOf="@id/indice_resolucion_7">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="3dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:background="@drawable/xml_linea_punteada" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:id="@+id/valor_resolucion_7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="11,11 Km."
+                                    android:textSize="@dimen/h5"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/contenedor_opciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/actividad_margen_lateral"
+        android:layout_marginEnd="@dimen/actividad_margen_lateral"
+        android:layout_marginBottom="@dimen/actividad_margen_inferior"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/importacion_resolucion_titulo"
+            android:textSize="@dimen/h1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/importacion_resolucion_descripcion"
+            android:textSize="@dimen/p" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/slider_text"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="?colorTertiary"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="64dp"
+                android:contentDescription="@string/importacion_resolucion_titulo"
+                android:stepSize="1.0"
+                android:value="4.0"
+                android:valueFrom="1.0"
+                android:valueTo="7.0" />
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/boton_continuar"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/continuar"
+            app:icon="@drawable/ic_next"
+            app:iconGravity="end" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_bosque"
+                    app:tint="?colorPrimaryContainer" />
+
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_arbol"
+                    app:tint="?colorPrimaryContainer" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_senal"
+                    app:tint="?colorPrimaryContainer" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_caminar"
+                    app:tint="?colorPrimary" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_arbol"
+                    app:tint="?colorPrimaryContainer" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_destino"
+                    app:tint="?colorPrimaryContainer" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

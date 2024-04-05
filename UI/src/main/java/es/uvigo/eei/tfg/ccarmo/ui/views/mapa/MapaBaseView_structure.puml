@@ -1,0 +1,570 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "es.uvigo.eei.tfg.ccarmo.ui.views.mapa.MapaBaseView",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_111671504 { 
+   	label=uvigo
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_225804715 { 
+   	label=eei
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Algoritmo1855503183[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Algoritmo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getAlgoritmo(nombreDB: String, configuracion: Configuracion, context: Context): AlgoritmoBase</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAlgoritmo(metodo: METODO, nombreDB: String, configuracion: Configuracion, context: Context): AlgoritmoBase</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isAEstrella(context: Context): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isDijkstra(context: Context): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAEstrella(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDijkstra(context: Context)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AlgoritmoBase232569721[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AlgoritmoBase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   configuracion: Configuracion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   quick: Map&lt;String, Vertice&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ruta: Ruta [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AlgoritmoBase(nombreDB: String, configuracion: Configuracion, context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" ># almacenarRuta(vertices: ArrayList&lt;Vertice&gt;, puntosCalor: ArrayList&lt;PuntoCalor&gt;): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" >+ buscarRuta(inicio: LatLon, fin: LatLon): AlgoritmoBase</TD></TR>
+<TR><TD ALIGN="LEFT" >- cargarBaseDeDatos(inicio: LatLon, fin: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" ># generarRutaDesde(id: String, fin: LatLon): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getContext(): Context</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRuta(): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVertices(): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isRuta(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># precargarNodosAlgoritmo(inicio: LatLon, fin: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" ># reciclarNodosAlgoritmo()</TD></TR>
+<TR><TD ALIGN="LEFT" ># reiniciarNodosAlgoritmo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setRuta(ruta: Ruta)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ terminar(): AlgoritmoBase</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BuscadorView1110513348[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BuscadorView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   adapter: AdapterBusquedas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resultadoListener: OnResultadoListener [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ BuscadorView(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ BuscadorView(context: Context, attrs: AttributeSet)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ BuscadorView(context: Context, attrs: AttributeSet, defStyleAttr: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ BuscadorView(context: Context, attrs: AttributeSet, defStyleAttr: int, defStyleRes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ buscar(texto: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarBuscador()</TD></TR>
+<TR><TD ALIGN="LEFT" >- iniciar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iniciar(nombreDB: String, resultadoListener: OnResultadoListener)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompoundBase1013033045[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompoundBase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ CompoundBase(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ CompoundBase(context: Context, attrs: AttributeSet)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ CompoundBase(context: Context, attrs: AttributeSet, defStyleAttr: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ CompoundBase(context: Context, attrs: AttributeSet, defStyleAttr: int, defStyleRes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># getActivity(): Activity</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Cronometro1688754482[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cronometro</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   contador: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tag: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tiempo: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Cronometro(tag: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- actualizar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ comenzar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ print()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ print(marca: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reiniciar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FiguraMapa1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FiguraMapa</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   position: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tipo: TYPE [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ FiguraMapa(tipo: TYPE, position: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clonar(): FiguraMapa</TD></TR>
+<TR><TD ALIGN="LEFT" >+ drawOnCanvas(canvas: Canvas, mapa: InterfazMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPosition(): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTipo(): TYPE</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setPosition(position: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setTipo(tipo: TYPE)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Filtro21398262950[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Filtro2</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   acera: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dibujar_lineas: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   escaleras: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paso_elevado: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paso_peatones: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   poi: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   preferencias: SharedPreferences2 [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   puntosDeCalor: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sendero: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   via_peatonal: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   via_residencial: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   via_servicio: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Filtro2(context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConfiguracion(): Configuracion</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNombreCapas(): String[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSeleccionados(): boolean[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isDibujarLineas(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isPuntosDeCalor(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setSeleccionado(posicion: int, seleccionado: boolean)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InterfazMapa995774535[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)InterfazMapa</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getAlto(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAncho(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCosenoGiro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDiferencialLatitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDiferencialLongitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLatitudCentro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLongitudCentro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSenoGiro(): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+
+LatLon840444960[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LatLon</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   altitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolucion: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ LatLon(latLon: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ LatLon(latitude: double, longitude: double, altitude: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ LatLon(latitude: double, longitude: double, altitude: double, resolucion: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ LatLon(id: String, latitude: double, longitude: double, altitude: double, resolucion: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarID(latitude: double, longitude: double, altitude: double, resolucion: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarID(coordenada: double, resolucion: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarIDAltitud(coordenada: double): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAltitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisica(a: LatLon, b: LatLon): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanciaFisicaA(latLon: LatLon): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getID(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLatitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLongitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getResolucion(parametro: double): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getResolucion(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isIgual(latLon: LatLon): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAltitud(altitud: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLatitud(latitud: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLongitud(longitud: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >- setResolucion(parametro: double, resolucion: int): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setResolucion(resolucion: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MapaBaseView1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MapaBaseView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alto: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ancho: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   angulo: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   azimuthLocal: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   azimuthShowedLocal: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   calor: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   clicks: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cosenoGiro: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: SQLite [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   figuras: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   figurasMapa: ArrayList&lt;FiguraMapa&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   filtro2: Filtro2 [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUI: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaAcera: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaEscaleras: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaNada: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaPasoDePeatones: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaPasoElevado: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaPoi: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaSendero: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaViaPeatonal: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaViaResidencial: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lineaViaServicio: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitud: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mCamino: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombreDB: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paintPuntoCalor: Paint [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewAngulo: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewAnguloX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewAnguloY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewDesplazamientoX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewDesplazamientoY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewZoomCentroX: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewZoomCentroY: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previewZoomEscala: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ruta: Ruta [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   senoGiro: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimaActualizacionBrujula: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userLocationLocal: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   usuario: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   zoom: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ MapaBaseView(mContext: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaBaseView(context: Context, attrs: AttributeSet)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaBaseView(context: Context, attrs: AttributeSet, defStyleAttr: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaBaseView(context: Context, attrs: AttributeSet, defStyleAttr: int, defStyleRes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actualizarBrujula(azimuth: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >- actualizarPinceles()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actualizarPosicionUsuario(latLon: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actualizarUI()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addFiguraMapa(uiOverlap: FiguraMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addFiguraMapa(uiOverlap: ArrayList&lt;FiguraMapa&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addFiguraMapa(uiOverlapIni: FiguraMapa, uiOverlapFin: FiguraMapa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ centrarPlano(origen: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ centrarPlanoEnElUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >- dibujarBitmapEnCanvas(canvas: Canvas, bitmap: Bitmap)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ generarRuta(origen: LatLon, destino: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAlto(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAncho(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAnguloCentroPantalla(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAzimuthLocal(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCosenoGiro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" ># getDB(): SQLite</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDiferencialLatitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDiferencialLongitud(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFigurasMapa(): ArrayList&lt;FiguraMapa&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFiltro(): Filtro2</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLatitudCentro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLinea(tipoVia: TipoVia): Paint</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLongitudCentro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" ># getMatriz(): Matrix</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNombreDB(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPaintMapaDeCalor(): Paint</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPaintRuta(): Paint</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewAngulo(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewAnguloX(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewAnguloY(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewDesplazamientoX(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewDesplazamientoY(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewZoomCentroX(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewZoomCentroY(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPreviewZoomEscala(): float</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRuta(): Ruta</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSenoGiro(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUbicacionUsuario(): LatLon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getZoom(): double</TD></TR>
+<TR><TD ALIGN="LEFT" ># isModoGeneracion(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ limpiarFigurasMapa()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onAnguloUpdate(angulo: double)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onLayout(changed: boolean, left: int, top: int, right: int, bottom: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># recalcularCoordenadas()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarClicks()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarFiguras()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaDeCalor()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarPosicionUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarTodo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ redibujarBitmapsEnPantalla()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ refrescarRuta()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAnguloCentroPantalla(angulo: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCalor(calor: Bitmap)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCargando(cargando: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setClicks(clicks: Bitmap)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDatos(origenDB: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDatos(origenDB: String, latitud: double, longitud: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFiguras(figuras: Bitmap)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLatitudCentro(latitud: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLongitudCentro(longitud: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMap(map: Bitmap)</TD></TR>
+<TR><TD ALIGN="LEFT" ># setPreviewAngulo(angulo: float, x: float, y: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># setPreviewAnguloDesactivado()</TD></TR>
+<TR><TD ALIGN="LEFT" ># setPreviewDesplazamiento(x: float, y: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># setPreviewDesplazamientoDesactivado()</TD></TR>
+<TR><TD ALIGN="LEFT" ># setPreviewZoom(escala: float, x: float, y: float)</TD></TR>
+<TR><TD ALIGN="LEFT" ># setPreviewZoomDesactivado()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setRuta(ruta2: Ruta)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setUserPosition(userPosition: Bitmap, azimuth: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setZoom(zoom: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MapaView1900846368[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MapaView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atenderAcciones: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   destinoRuta: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   evento_click_inicio: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerCalor: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerClicks: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerMap: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerOver: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   handlerUser: Handler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorCalor: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorMap: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorOver: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   looperExecutorUser: LooperExecutor [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   origenRuta: LatLon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   scaleGestureDetector: ScaleGestureDetector [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueA1: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueA2: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueB1: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toqueB2: Pixel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ultimoClick: LatLon [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ MapaView(mContext: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaView(context: Context, attrs: AttributeSet)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaView(context: Context, attrs: AttributeSet, defStyleAttr: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MapaView(context: Context, attrs: AttributeSet, defStyleAttr: int, defStyleRes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- click(latLon: LatLon)</TD></TR>
+<TR><TD ALIGN="LEFT" >- iniciar()</TD></TR>
+<TR><TD ALIGN="LEFT" >- obtenerAngulo(a: Pixel, b: Pixel): float</TD></TR>
+<TR><TD ALIGN="LEFT" ># onAnguloUpdate(angulo: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarClicks()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarFiguras()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarMapaDeCalor()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recargarPosicionUsuario()</TD></TR>
+<TR><TD ALIGN="LEFT" >- reiniciarPreview()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCargando(cargando: boolean)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ruta232569721[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ruta</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   distancia: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapaCalor: ArrayList&lt;PuntoCalor&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombreDB: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rutaDB: SQLite [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Ruta(nombreDB: String, distancia: double, mapaCalor: ArrayList&lt;PuntoCalor&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDB(context: Context): SQLite</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistancia(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMapaCalor(): ArrayList&lt;PuntoCalor&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNombreDB(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDistancia(distancia: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMapaCalor(mapaCalor: ArrayList&lt;PuntoCalor&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SQLite1439053178[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SQLite</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   db: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># SQLite(tabla: String, context: Context)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addVertices(vertices: Vertice...)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addVertices(vertices: ArrayList&lt;Vertice&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ borrar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBaseDeDatos(paquete: String, context: Context): SQLite</TD></TR>
+<TR><TD ALIGN="LEFT" >- getContentValues(vertice: Vertice): ContentValues</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCursor(): Cursor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCursor(writable: boolean, inverse: boolean, busqueda: String): Cursor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCursorRuta(): Cursor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVertice(cursor: Cursor): Vertice</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticeListArray(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double): List&lt;Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(margen: Margen, latitude1: double, latitude2: double, longitude1: double, longitude2: double, configuracion: Configuracion): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(texto: String): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getVerticesMap(texto: String, limite: int): Map&lt;String, Vertice&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreate(db: SQLiteDatabase)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onUpgrade(db: SQLiteDatabase, oldVersion: int, newVersion: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+CompoundBase1013033045 -> MapaBaseView1900846368[arrowhead=none, arrowtail=empty, dir=both];
+InterfazMapa995774535 -> MapaBaseView1900846368[arrowhead=none, arrowtail=empty, dir=both];
+MapaBaseView1900846368 -> Algoritmo1855503183[label="generarRuta() -> getAlgoritmo()"];
+MapaBaseView1900846368 -> BuscadorView1110513348[label="setDatos() -> iniciar()"];
+MapaBaseView1900846368 -> FiguraMapa1900846368[label="figurasMapa
+[0..*]"];
+MapaBaseView1900846368 -> Filtro21398262950[label="filtro2
+[0..1]"];
+MapaBaseView1900846368 -> LatLon840444960[label="userLocationLocal
+[0..1]"];
+MapaBaseView1900846368 -> MapaView1900846368[arrowhead=none, arrowtail=empty, dir=both];
+MapaBaseView1900846368 -> Ruta232569721[label="ruta
+[0..1]"];
+MapaBaseView1900846368 -> SQLite1439053178[label="db
+[0..1]"];
+    
+}
+@enduml

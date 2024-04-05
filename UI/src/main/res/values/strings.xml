@@ -1,0 +1,145 @@
+<!--
+  ~ Trabajo de fin de grado: "Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android"
+  ~ Creado por: Cristian Do Carmo Rodríguez
+  ~ Tutora: Lucía Díaz Vilariño
+  ~ Cotutor: Jesús Balado Frías
+  ~ Copyright (c) 2024. Todos los derechos reservados.
+  -->
+
+<resources>
+    <string name="app_name" translatable="false">TFG - Cristian Do Carmo Rodríguez</string>
+    <string name="desarrollador" translatable="false">Cristian Do Carmo Rodríguez\nLucía Díaz Vilariño\nJesus Balado Frías</string>
+
+
+    <string name="nombre_proyecto">Definición e implementación de herramienta para la navegación de peatones en entornos urbanos para el sistema operativo móvil Android</string>
+    <string name="mapa">Mapa</string>
+    <string name="capas">Capas</string>
+
+    <string name="acera">Acera</string>
+    <string name="paso_peatones">Paso de peatones</string>
+    <string name="paso_elevado">Paso elevado</string>
+    <string name="escaleras">Escaleras</string>
+    <string name="via_residencial">Vía residencial</string>
+    <string name="via_servicio">Vía de servicio</string>
+    <string name="via_peatonal">Vía peatonal</string>
+    <string name="sendero">Sendero</string>
+    <string name="poi">Punto de interés</string>
+    <string name="puntos_de_calor">Puntos de calor</string>
+    <string name="dibujar_lineas">Dibujar líneas</string>
+
+    <string name="ruta">Ruta</string>
+
+    <string name="origen">Origen</string>
+    <string name="destino">Destino</string>
+    <string name="procesando">Procesando</string>
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
+    <string name="pulsar_sobre_la_ubicacion">Pulsar sobre la ubicación</string>
+    <string name="calcular_ruta">Calcular ruta</string>
+
+    <string name="menu_importar">Importar datos</string>
+    <string name="menu_mapa">Abrir mapa</string>
+    <string name="menu_ajustes">Ajustes</string>
+    <string name="menu_generar_mapa">Generar mapa</string>
+    <string name="menu_debug">Mapa de ejemplo</string>
+
+    <string name="importacion_titulo">Añadir nube de puntos</string>
+    <string name="importacion_resolucion_titulo">Resolución</string>
+    <string name="importacion_resolucion_descripcion">Selecciona la precisión deseada para la nube de puntos. Una precisión mayor hará uso de un mayor número de recursos al crear un mapa más denso.</string>
+
+    <string name="importacion_archivo_titulo">Archivo</string>
+    <string name="importacion_archivo_descripcion">Selecciona el archivo a importar desde el explorador de archivos o desde un enlace. Los formatos compatibles son TCX, GPX, GEOJSON y OSM</string>
+
+    <string name="importacion_archivo_opcion_archivo">Seleccionar archivo</string>
+    <string name="importacion_archivo_opcion_enlace">Seleccionar un enlace</string>
+
+    <string name="importacion_archivo_opcion_enlace_hint">Escribe aquí la URL</string>
+
+    <string name="importacion_archivo_no_valido_titulo">El archivo no es válido</string>
+    <string name="importacion_archivo_no_valido_descripcion">Solo se pueden importar archivos en formato TCX, GPX, GEOJSON y OSM</string>
+    <string name="importacion_archivo_url_no_valido_descripcion">No se ha podido reconocer ninguna URL válida. Los formatos compatibles son TCX, GPX, GEOJSON y OSM</string>
+
+    <string name="guardar">Guardar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="abrir_navegacion">Navegación</string>
+
+    <string name="importacion_archivo_ejecucion_titulo">Importando nube de puntos</string>
+    <string name="importacion_archivo_ejecucion_descripcion">Se están interpretando los datos del archivo para generar la nube de puntos</string>
+
+    <string name="capas_visibles">Capas visibles</string>
+    <string name="importar_descripcion">Usa importar para añadir datos en tus mapas de manera permanente o visualizar para previsualizar los datos sin realizar cambios</string>
+    <string name="importar">Importar</string>
+    <string name="visualizar">Visualizar</string>
+    <string name="cancelar">Cancelar</string>
+
+    <string name="importacion_mapas_ejemplo_titulo">¿Deseas importar los mapas de ejemplo?</string>
+    <string name="importacion_mapas_ejemplo_descripcion">Al hacerlo se importarán varios mapas guardados dentro de la aplicación que sirven de ejemplo en su desarrollo</string>
+
+    <string name="mapa_busqueda_hint">Pulsa sobre un lugar</string>
+    <string name="mapa_generar_ruta_hasta_aqui">Generar ruta hasta este punto</string>
+    <string name="mapa_generar_ruta_desde_aqui">Usar como origen de la ruta</string>
+
+    <string name="instruccion_llegada_destino">Has llegado a tu destino</string>
+    <string name="instruccion_sigue_recto">Sigue recto</string>
+    <string name="instruccion_gira_derecha_ligeramente">Gira ligeramente a la derecha</string>
+    <string name="instruccion_gira_derecha">Gira a la derecha</string>
+    <string name="instruccion_gira_izquierda">Gira a la izquierda</string>
+    <string name="instruccion_gira_izquierda_ligeramente">Gira ligeramente a la izquierda</string>
+    <string name="instruccion_da_la_vuelta">Da la vuelta</string>
+
+
+    <string name="borrar_base_de_datos_titulo">Borrar base de datos</string>
+    <string name="borrar_base_de_datos_descripcion">Se borrará toda la información y nubes de puntos almacenadas en el dispositivo. Esta acción no se puede deshacer. Deberás reimportar el contenido deseado</string>
+    <string name="borrar_base_de_datos_boton">Borrar todo</string>
+
+
+    <string name="borrar_area_titulo">Borrar fragmento del mapa</string>
+    <string name="borrar_area_descripcion">Se borrarán los elementos de un área concreta definida manualmente. Esta acción no se puede deshacer. Deberás reimportar el contenido deseado</string>
+    <string name="borrar_area_boton">Borrar área</string>
+    <string name="borrar_area_guia">Pulsa sobre la pantalla para crear un área de puntos. Se borrarán todos los puntos dentro de la región.</string>
+    <string name="borrar_area_confirmacion">¿Seguro que deseas borrar permanentemente todos los puntos dentro de esta región? No se puede deshacer</string>
+
+    <string name="borrar_base_de_datos_confirmacion">¿Seguro que deseas borrar permanentemente la base de datos? No se puede deshacer</string>
+
+    <string name="salir_generacion_puntos_titulo">Detener proceso</string>
+
+    <string name="salir_generacion_puntos_descripcion">¿Seguro que deseas salir? Se perderán los puntos generados</string>
+    <string name="salir">Salir</string>
+    <string name="titulo_tabla_resolucion">Tabla de resoluciones con la tolerancia máxima entre dos coordenadas distintas</string>
+    <string name="distancia_ruta">Hay 123 m. hasta el destino</string>
+    <string name="distancia_recorrida">Has recorrido 123 m.</string>
+
+
+    <string name="opcion_1">Navia, Vigo, Pontevedra. Fuente: OpenStreetMap. Datos registrados bajo Licencia de Base de datos Abierta de Open Data Commons (OSM)</string>
+    <string name="opcion_2">CUVI, Pontevedra. Fuente: OpenStreetMap. Datos registrados bajo Licencia de Base de datos Abierta de Open Data Commons (OSM)</string>
+    <string name="opcion_3">Paseo por Navia, Vigo, Pontevedra, registrado con el reloj inteligente Samsung Galaxy Watch 4 (GPX)</string>
+    <string name="opcion_4">Paseo por Navia, Vigo, Pontevedra, registrado con el software de Fitbit (TCX)</string>
+    <string name="opcion_5">Paseo por Navia, Vigo, Pontevedra, registrado con la aplicación (GeoJSON)</string>
+    <string name="continuar">Continuar</string>
+
+    <string name="seleccionar_algoritmo_titulo">Seleccionar algoritmo</string>
+    <string name="seleccionar_algoritmo_descripcion">Seleccionar el algoritmo usado para la generación de rutas en el plano.</string>
+
+
+    <string name="seleccionar_tipo_via_titulo">Seleccionar el tipo de vía</string>
+    <string name="seleccionar_tipo_via_descripcion">Para poder ordenar el mapa por capas es necesario indicar el típo de vía que representan los puntos que se van a añadir</string>
+
+    <string name="licencias">Licencias de código abierto</string>
+    <string name="consultar_lista_licencias">Consulta la lista de licencias de código abierto</string>
+    <string name="abrir_licencias">Ver lista</string>
+
+    <string name="importacion_error_titulo">Se ha detectado un error</string>
+    <string name="importacion_error_descripcion">Durante el proceso de importación se ha detectado un fallo y se ha detenido el proceso. Es posible que se hayan añadido nuevos puntos pero que estos no estén conectados.</string>
+
+    <string name="error_generacion_ruta_titulo">No se ha podido generar la ruta</string>
+    <string name="error_generacion_ruta_descripcion">Ha surgido un error al generar la ruta deseada. Es posible que se trate de generar una ruta demasiado grande o con demasiadas capas de datos activas.</string>
+    <string name="error_generacion_ruta_descripcion2">No se ha podido encontrar una ruta que cumpla los parámetros utilizados</string>
+
+    <string name="buscar">Buscar</string>
+
+    <string name="importacion_destino_titulo">¿Abrir o importar?</string>
+    <string name="importacion_destino_descripcion">Elige cómo deseas abrir el contenido del archivo. Importar guardará una copia de los nuevos puntos dentro de la base de datos mientras que visualizar solo mostrará el contenido de manera temporal.</string>
+
+    <string name="generando_ruta_vigo">Se está generando una ruta hasta Vigo</string>
+
+</resources>
